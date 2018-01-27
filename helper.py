@@ -37,7 +37,7 @@ def download_extract(database_name, data_path):
         extract_path = os.path.join(data_path, 'vehicles')
         save_path = os.path.join(data_path, 'vehicles.zip')
         extract_fn = _unzip
-    elif database_name == DATASET_MNIST_NAME:
+    elif database_name == DATASET_NON_VEHICLE_NAME:
         url = 'https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/non-vehicles.zip'
         # hash_code = 'f68b3c2dcbeaaa9fbdd348bbdeb94873'
         extract_path = os.path.join(data_path, 'non-vehicles')
