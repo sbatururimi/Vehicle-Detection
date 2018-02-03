@@ -136,8 +136,6 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
 I used probably the simplest methods and techniques but at some moment was blocked by the features array size obtained from the cars and non-cars list. 
 Instead of being something like ( batch_num x feature_num) and used pdb to debug each step.
 
