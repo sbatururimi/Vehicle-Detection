@@ -122,6 +122,7 @@ Ultimately I used a Hog Sub-sampling Window Search using YCrCb 3-channel HOG fea
 
 #### 1. Link to your final video output.  
 Here's a [link to my video result](./videos_output/test_video.mp4)
+
 Another analyzed [video](./videos_output/project_video.mp4)
 
 
