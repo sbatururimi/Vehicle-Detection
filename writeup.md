@@ -93,7 +93,7 @@ ystop = 656
 ```
 for an image size of 1280 × 720, where 1280 is the width and 720 the height.
 
-- by using a scale factor of 1.5 which was the more appropriate after a bunch tests.
+- by using a multiscale approach visiblein *detect_vehicle*
 - a search window overlap of 75%
 
 ![alt text][image6]
@@ -112,7 +112,26 @@ Another analyzed [video](./videos_output/project_video.mp4)
 
 #### 2. Some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
-I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  I alsoimplemented the idea of utilizing the fact that in the subsequent frames the cars are located at or near the same positions, while false positives are present only for 1-2 frames. I used the simplest way to implement this by using multi-frame accumulated heatmap: just storing the heatmap of the last N frames (N can be 5 or 8) and doing the same thresholding and labelling on the sum of these heatmaps.
+
+```
+# Add heat to each box in box list
+...
+heat = np.zeros_like(out_img[:,:,0]).astype(np.float)
+heat = add_heat(heat, box_list)
+# Apply threshold to help remove false positives
+heat = apply_heat_threshold(heat, 5)
+# Visualize the heatmap when displaying    
+current_heatmap = np.clip(heat, 0, 255)
+history.append(current_heatmap)
+# use the accumulated history
+heatmap = np.zeros_like(current_heatmap).astype(np.float)
+for heat in history:
+    heatmap = heatmap + heat
+# Find final boxes from heatmap using label function
+labels = label(heatmap)
+...
+```
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 ![alt text][image7]
