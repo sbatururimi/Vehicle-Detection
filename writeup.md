@@ -19,9 +19,8 @@ The goals / steps of this project are the following:
 [image3]: ./output_images/spatially_binned_feature.png
 [image4]: ./output_images/histogram_colors.png
 [image5]: ./output_images/normalized_features.png
-[image6]: ./output_images/windows.png
-[image7]: ./output_images/hog_subsampling_window_search.png
-[image8]: ./output_images/car_positions.png
+[image6]: ./output_images/hog_subsampling_window_search.png
+[image7]: ./output_images/car_positions.png
 
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -84,8 +83,6 @@ When combining all features together (HOG, spatially binned color, histograms of
 During my expirements, I decided to search windows starting from the bottom of the image till the half of its height.
 I started with a window size of 96x96 and an overlapping of 30% on the x-axis and 50% on the y-axis, extracting all features from each window separatelly.
 
-![alt text][image6]
-
 I later improved this window search:
 - by appling a Hog Sub-sampling Window Search, that is to extract hog features once and then can be sub-sampled to get all of its overlaying windows
 - by changing the region of interests in y-coordinate in which I was looking for windows to static values, that is
@@ -99,13 +96,11 @@ for an image size of 1280 × 720, where 1280 is the width and 720 the height
 - by using a scale factor of 1.5 which was the more appropriate after a bunch tests.
 - a search window overlap of 75%
 
-![alt text][image7]
+![alt text][image6]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I used a Hog Sub-sampling Window Search using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
-
-![alt text][image7]
+Ultimately I used a Hog Sub-sampling Window Search using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  
 ---
 
 ### Video Implementation
@@ -121,7 +116,7 @@ Another analyzed [video](./videos_output/project_video.mp4)
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
-![alt text][image8]
+![alt text][image7]
 
 ---
 
