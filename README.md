@@ -31,5 +31,5 @@ To create an Anaconda environment (tested on MacOS), run the following command i
  https://github.com/sbatururimi/Car-Behavioral-Cloning/blob/master/environment_ubuntu.yaml
 
 ## License
-[![License: MIT](https://github.com/sbatururimi/Vehicle-Detection/blob/master/LICENSE.md)
+![License: MIT](https://github.com/sbatururimi/Vehicle-Detection/blob/master/LICENSE.md)
 
