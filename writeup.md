@@ -101,7 +101,6 @@ for an image size of 1280 × 720, where 1280 is the width and 720 the height
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I used a Hog Sub-sampling Window Search using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  
----
 
 ### Video Implementation
 
